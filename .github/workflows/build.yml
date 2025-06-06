@@ -20,9 +20,10 @@ jobs:
             echo "Tag format is invalid. Expected semantic versioning (e.g., 1.2.3)."
             exit 1
           fi
-
   macos:
     runs-on: macos-latest
+    needs:
+      - validate
     strategy:
       matrix:
         arch:
@@ -41,6 +42,8 @@ jobs:
           path: protoc-gen-swift-macos-${{ matrix.arch }}
   linux:
     runs-on: ubuntu-latest
+    needs:
+      - validate
     strategy:
       matrix:
         arch:
