@@ -55,7 +55,7 @@ jobs:
           repository: apple/swift-protobuf
           ref: ${{ github.ref_name }}
       - run: |
-          swift build -c release
+          swift build -c release --static-swift-stdlib
           mv .build/release/protoc-gen-swift protoc-gen-swift-linux-${{ matrix.arch }}
       - uses: actions/upload-artifact@v4
         with:
